@@ -12,7 +12,7 @@ description: 음악 앱을 제어하기 위한 규격
 | ------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 1.0     | 2020.07.15 | 규격 추가                                                                                                                                                                                                                                                                 |
 | 1.1     | 2020.10.29 | Song.category: SIMILAR 추가 PlayFailed event(errorCode) : noSimilarSong 추가 HandlePlaylist, HandleLyrics directive 추가 HandlePlaylistSucceeded, HandlePlaylistFailed, HandleLyricsSucceeded, HandleLyricsFailed event 추가 PlaySuspended event 의 issueCode 에 excludeSong 추가 |
-| 1.2     | 2022.05.06 | "data" arbitrary object를 failed 관련 이벤트에 추가                                                                                                                                                                                                                            |
+| 1.2     | 2022.05.06 | failed 관련 이벤트에 data 추가                                                                                                                                                                                                                                                |
 
 ## SDK Interface
 
