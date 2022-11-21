@@ -6,11 +6,15 @@
 Android, iOS, Linux 의 자세한 변경사항은 [Github](source-code.md) 에서 확인하실 수 있습니다.
 {% endhint %}
 
+### **2022-11-21**
+
+* Capability interface - [Display](capability-interface/display/), [ASR](capability-interface/asr.md), [Text](capability-interface/text.md), [PhoneCall](capability-interface/phonecall.md), [Message](capability-interface/message.md), [MediaPlayer](capability-interface/mediaplayer.md), [Routine](capability-interface/routine.md), [Message](capability-interface/message.md#messageagent) 업데이트
+
 ### **2021-10-01**
 
 * [시작하기](platform/ios/start.md)(iOS)에 권장 버전 정보 추가
 * [테스트 환경 설정](platform/ios/testing\_sdk\_integration.md)(iOS) 가이드 주소값 수정
-* [Platform 에 따른 Capability interface 지원 현황](capability-interface/#platform)(iOS) 수
+* [Platform 에 따른 Capability interface 지원 현황](capability-interface/#platform)(iOS) 수정
 
 ### **2021-08-10**
 
