@@ -73,7 +73,7 @@ strings.xml 파일에 _nugu\_redirect\_scheme_, \_nugu\_redirect\_host\_를 추�
 
 #### 다운로드 받기 <a href="#1" id="1"></a>
 
-[NUGU SDK PoC목록](https://developers.nugu.co.kr/#/sdk/pocList)에서 음성인식 모델 파일을 다운로드 받습니다.
+[NUGU SDK PoC목록](https://developers.nugu.co.kr/#/sdk/pocList)에서 음성인식 모델 파일을 다운로드 받고 Asset 폴더에 파일을 복사합니다.
 
 * 체험판은 [체험판 신청 내역](https://developers.nugu.co.kr/#/sdk/sdkTrial)에서 음성인식 모델파일을 다운로드 받습니다.
 
@@ -245,7 +245,8 @@ authClient.loginAnonymously(object : NuguOAuthInterface.OnLoginListener {
 
     client.asrAgent?.addOnResultListener(...)
     client.asrAgent?.addOnStateChangeListener(...)
-    client.asrAgent?.startRecognition()
+    // 음성인식 시작
+    client.asrAgent?.startRecognition(initiator = ASRAgentInterface.Initiator.TAP)
     ```
 
 ## 더 알아보기
