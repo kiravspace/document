@@ -20,7 +20,7 @@ description: 디바이스의 블루투스를 제어하기 위한 규격
 Bluetooth interface 규격에 따른 디바이스의 동작 제어는 BluetoothAgent 가 처리합니다.
 
 {% hint style="warning" %}
-iOS 는 BluetoothAgent 를 지원하지 않습니다.
+iOS/Linux 는 BluetoothAgent 를 지원하지 않습니다.
 {% endhint %}
 
 {% tabs %}
@@ -39,18 +39,6 @@ class MyBluetoothProvider: BluetoothProvider {
 }
 NuguAndroidClient.Builder(...)
     .enableBluetooth(MyBluetoothProvider())
-```
-{% endtab %}
-
-{% tab title="Linux" %}
-CapabilityFactory::makeCapability 함수로 BluetoothAgent 를 생성하고 NuguClient 에 추가해 주어야합니다.
-
-```
-auto bluetooth_handler(std::shared_ptr<IBluetoothHandler>(
-        CapabilityFactory::makeCapability<BluetoothAgent, IBluetoothHandler>()));
-
-nugu_client->getCapabilityBuilder()
-    ->add(bluetooth_handler.get())
 ```
 {% endtab %}
 {% endtabs %}
@@ -77,23 +65,6 @@ class MyBluetoothProvider: BluetoothProvider {
 
     ...
 }
-```
-{% endtab %}
-
-{% tab title="Linux" %}
-IBluetoothListener를 추가합니다.
-
-```
-class BluetoothListener : public IBluetoothListener {
-public:
-    ...
-
-    void requestContext(BTDeviceInfo& device_info) override;
-    {
-        ...
-    }
-};
-auto bluetooth_listener(std::make_shared<BluetoothListener>());
 ```
 {% endtab %}
 {% endtabs %}
@@ -123,29 +94,6 @@ val listener = object: BluetoothAgentInterface.Listener {
     }
 }
 bluetoothAgent.setListener(listener)
-```
-{% endtab %}
-
-{% tab title="Linux" %}
-IBluetoothListener를 추가합니다.
-
-```
-class BluetoothListener : public IBluetoothListener {
-public:
-    ...
-
-    void startDiscoverableMode(long duration_sec) override
-    {
-        ...
-    }
-        
-    void finishDiscoverableMode() override
-    {
-        ...
-    }
-};
-auto bluetooth_listener(std::make_shared<BluetoothListener>());
-CapabilityFactory::makeCapability<BluetoothAgent, IBluetoothHandler>(bluetooth_listener.get());
 ```
 {% endtab %}
 {% endtabs %}

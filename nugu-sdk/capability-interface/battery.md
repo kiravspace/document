@@ -19,6 +19,10 @@ description: 디바이스 배터리 정보를 Play 로 전달하기 위한 규�
 
 Battery interface 규격에 따른 디바이스의 정보 전달은 BatteryAgent 가 처리합니다.
 
+{% hint style="warning" %}
+Linux 는 BatteryAgent 를 지원하지 않습니다.
+{% endhint %}
+
 {% tabs %}
 {% tab title="Android" %}
 NuguAndroidClient instance 를 통해 BatteryAgent instance 에 접근할 수 있습니다.
@@ -37,19 +41,6 @@ class MyBatteryStatusProvider: BatteryStatusProvider {
 }
 NuguAndroidClient.Builder(...)
     .enableBattery(MyBatteryStatusProvider())
-```
-{% endtab %}
-
-{% tab title="Linux" %}
-CapabilityFactory::makeCapability 함수로 BatteryAgent 를 생성하고 NuguClient 에 추가해 주어야합니다.
-
-```
-auto battery_handler(std::shared_ptr<IBatteryHandler>(
-        CapabilityFactory::makeCapability<BatteryAgent, IBatteryHandler>()));
-
-nugu_client->getCapabilityBuilder()
-    ->add(battery_handler.get())
-    ->construct();
 ```
 {% endtab %}
 {% endtabs %}
@@ -72,23 +63,6 @@ class MyBatteryStatusProvider: BatteryStatusProvider {
         ...
     }
 }
-```
-{% endtab %}
-
-{% tab title="Linux" %}
-IBatteryListener를 추가합니다.
-
-```
-class BatteryListener : public IBatteryListener {
-public:
-    ...
-
-    void requestContext(BatteryInfo& battery_info) override;
-    {
-        ...
-    }
-};
-auto battery_listener(std::make_shared<BatteryListener>());
 ```
 {% endtab %}
 {% endtabs %}

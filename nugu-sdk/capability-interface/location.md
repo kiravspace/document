@@ -18,6 +18,10 @@ description: 디바이스 위치 정보를 Play 로 전달하기 위한 규격
 
 Location interface 규격에 따른 디바이스의 동작 제어는 LocationAgent 가 처리합니다.
 
+{% hint style="warning" %}
+Linux 는 LocationAgent 를 지원하지 않습니다.
+{% endhint %}
+
 {% tabs %}
 {% tab title="Android" %}
 NuguAndroidClient instance 를 통해 LocationAgent instance 에 접근할 수 있습니다.
@@ -32,19 +36,6 @@ NuguClient instance 를 통해 LocationAgent instance 에 접근할 수 있습�
 
 ```
 let locationAgent = nuguClient.locationAgent
-```
-{% endtab %}
-
-{% tab title="Linux" %}
-CapabilityFactory::makeCapability 함수로 LocationAgent 를 생성하고 NuguClient 에 추가해 주어야합니다.
-
-```
-auto location_handler(std::shared_ptr<ILocationHandler>(
-        CapabilityFactory::makeCapability<LocationAgent, ILocationHandler>()));
-
-nugu_client->getCapabilityBuilder()
-    ->add(location_handler.get())
-    ->construct();
 ```
 {% endtab %}
 {% endtabs %}
@@ -78,23 +69,6 @@ class MyLocationAgentDelegate: LocationAgentDelegate {
     }
 }
 locationAgent.delegate = MyLocationAgentDelegate()
-```
-{% endtab %}
-
-{% tab title="Linux" %}
-ILocationListener를 추가합니다.
-
-```
-class LocationListener : public ILocationListener {
-public:
-    ...
-
-    void requestContext(LocationInfo& location_info) override;
-    {
-        ...
-    }
-};
-auto location_listener(std::make_shared<LocationListener>());
 ```
 {% endtab %}
 {% endtabs %}
