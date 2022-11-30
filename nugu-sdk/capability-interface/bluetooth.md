@@ -8,10 +8,10 @@ description: 디바이스의 블루투스를 제어하기 위한 규격
 
 최신 버전은 1.1 입니다.
 
-| Version | Date | Description |
-| :--- | :--- | :--- |
-| 1.0 | 2020.03.03 | 규격 추가 |
-| 1.1 | 2020.06.22 | Context 의 device 에 profile 필드 추가 |
+| Version | Date       | Description                      |
+| ------- | ---------- | -------------------------------- |
+| 1.0     | 2020.03.03 | 규격 추가                            |
+| 1.1     | 2020.06.22 | Context 의 device 에 profile 필드 추가 |
 
 ## SDK Interface
 
@@ -27,13 +27,13 @@ iOS/Linux 는 BluetoothAgent 를 지원하지 않습니다.
 {% tab title="Android" %}
 NuguAndroidClient instance 를 통해 BluetoothAgent instance 에 접근할 수 있습니다.
 
-```text
+```
 val bluetoothAgent = nuguAndroidClient.bluetoothAgent
 ```
 
 NuguAndroidClient 생성시 BluetoothProvider 을 추가합니다.
 
-```text
+```
 class MyBluetoothProvider: BluetoothProvider {
     ...
 }
@@ -53,7 +53,7 @@ NuguAndroidClient.Builder(...)
 {% tab title="Android" %}
 BluetoothProvider 를 구현합니다.
 
-```text
+```
 class MyBluetoothProvider: BluetoothProvider {
     override fun device() : BluetoothHost? {
         ...
@@ -79,7 +79,7 @@ class MyBluetoothProvider: BluetoothProvider {
 {% tab title="Android" %}
 제어 기능을 실행하려면 BluetoothAgentInterface.Listener 를 추가합니다.
 
-```text
+```
 val listener = object: BluetoothAgentInterface.Listener {
     fun onDiscoverableStart(durationInSeconds: Long = 0) : DiscoverableStartResult {
         ...
@@ -100,7 +100,7 @@ bluetoothAgent.setListener(listener)
 
 ## Context
 
-```text
+```
 {
   "Bluetooth": {
     "version": "1.0",
@@ -123,18 +123,18 @@ bluetoothAgent.setListener(listener)
 }
 ```
 
-| parameter | type | mandatory | description |
-| :--- | :--- | :--- | :--- |
-| device | object | Y | 디바이스의 블루투스 정보 |
-| device.name | string | Y | TTS로 읽어줄 때 사용가능한 필드 예: NUGU\_123456 |
-| device.status | string | Y | ON / OFF |
-| device.profile | list | N | Pairing된 bluetooth device가 있을 경우 지원하는 profile의 목록 해당 목록은 지원하는 profile이 있을 경우 명시됨 |
-| device.profile.name | string | N | Pairing된 bluetooth device가 있을 경우 해당 device의 지원 profile의 이름을 나타냄 아래는 현재 확인된 profile list이며, 해당 device에서 사용하는 profile은 추가될 수 있음  - **HSP** : Headset Profile\(전화 수발신을 위한 profile\)  - **A2DP** : Advanced Audio Distribution Profile\(오디오 재생 profile\)  - **PBAP** : Phone Book Access Profile\(Pairing된 device의 연락처를 수집할 수 있는 profile\)  - **MAP** : Message Access Profile\(문자 수발신을 위한 profile\)  - **PAN** : Personal Area Networking\(블루투스 테더링 profile\)  Profile 이름은 bluetooth.com에 명시된 profile의 약자임 |
-| device.profile.enabled | string | N | Pairing된 bluetooth device가 있을 경우 해당 device의 지원 profile의 사용 여부를 나타냄 \(TRUE/FALSE\) |
-| activeDevice | object | N | 연결된 블루투스 기기 정보 |
-| activeDevice.id | string | N | ID\(pairedDevices 목록 중 하나이어야 함\) |
-| activeDevice.name | string | N | - |
-| activeDevice.streaming | string | Y | streaming 상태 \(INACTIVE/ACTIVE/PAUSED/UNUSABLE\) |
+| parameter              | type   | mandatory | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ---------------------- | ------ | --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| device                 | object | Y         | 디바이스의 블루투스 정보                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| device.name            | string | Y         | TTS로 읽어줄 때 사용가능한 필드 예: NUGU\_123456                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| device.status          | string | Y         | ON / OFF                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| device.profile         | list   | N         | Pairing된 bluetooth device가 있을 경우 지원하는 profile의 목록 해당 목록은 지원하는 profile이 있을 경우 명시됨                                                                                                                                                                                                                                                                                                                                                                                                        |
+| device.profile.name    | string | N         | Pairing된 bluetooth device가 있을 경우 해당 device의 지원 profile의 이름을 나타냄 아래는 현재 확인된 profile list이며, 해당 device에서 사용하는 profile은 추가될 수 있음 - **HSP** : Headset Profile(전화 수발신을 위한 profile) - **A2DP** : Advanced Audio Distribution Profile(오디오 재생 profile) - **PBAP** : Phone Book Access Profile(Pairing된 device의 연락처를 수집할 수 있는 profile) - **MAP** : Message Access Profile(문자 수발신을 위한 profile) - **PAN** : Personal Area Networking(블루투스 테더링 profile) Profile 이름은 bluetooth.com에 명시된 profile의 약자임 |
+| device.profile.enabled | string | N         | Pairing된 bluetooth device가 있을 경우 해당 device의 지원 profile의 사용 여부를 나타냄 (TRUE/FALSE)                                                                                                                                                                                                                                                                                                                                                                                                         |
+| activeDevice           | object | N         | 연결된 블루투스 기기 정보                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| activeDevice.id        | string | N         | ID(pairedDevices 목록 중 하나이어야 함)                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| activeDevice.name      | string | N         | -                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| activeDevice.streaming | string | Y         | streaming 상태 (INACTIVE/ACTIVE/PAUSED/UNUSABLE)                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 ## Directive
 
@@ -142,7 +142,7 @@ bluetoothAgent.setListener(listener)
 
 Discoverable mode 활성화 요청입니다.
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -158,15 +158,15 @@ Discoverable mode 활성화 요청입니다.
 }
 ```
 
-| parameter | type | mandatory | description |
-| :--- | :--- | :--- | :--- |
-| durationInSeconds | long | N | Discoverable mode 를 지속할 시간\(필드가 없는 경우 상시 모드\) |
+| parameter         | type | mandatory | description                                 |
+| ----------------- | ---- | --------- | ------------------------------------------- |
+| durationInSeconds | long | N         | Discoverable mode 를 지속할 시간(필드가 없는 경우 상시 모드) |
 
 ### FinishDiscoverableMode
 
 Discoverable mode 비활성화 요청입니다.
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -185,7 +185,7 @@ Discoverable mode 비활성화 요청입니다.
 
 연결된 블루투스 기기의 음원 재생 요청입니다.
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -204,7 +204,7 @@ Discoverable mode 비활성화 요청입니다.
 
 연결된 블루투스 기기의 음원 재생 중지 요청입니다.
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -223,7 +223,7 @@ Discoverable mode 비활성화 요청입니다.
 
 연결된 블루투스 기기의 음원 일시정지 요청입니다.
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -242,7 +242,7 @@ Discoverable mode 비활성화 요청입니다.
 
 연결된 블루투스 기기의 다음 음원 재생 요청입니다.
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -261,7 +261,7 @@ Discoverable mode 비활성화 요청입니다.
 
 연결된 블루투스 기기의 이전 음원 재생 요청입니다.
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -280,7 +280,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### StartDiscoverableModeSucceeded
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -296,15 +296,15 @@ Discoverable mode 비활성화 요청입니다.
 }
 ```
 
-| parameter | type | mandatory | description |
-| :--- | :--- | :--- | :--- |
-| hasPairedDevices | boolean | Y | paired device 유무 |
+| parameter        | type    | mandatory | description      |
+| ---------------- | ------- | --------- | ---------------- |
+| hasPairedDevices | boolean | Y         | paired device 유무 |
 
 ### StartDiscoverableModeFailed
 
 * Discoverable mode 진입 실패
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -320,13 +320,13 @@ Discoverable mode 비활성화 요청입니다.
 }
 ```
 
-| parameter | type | mandatory | description |
-| :--- | :--- | :--- | :--- |
-| hasPairedDevices | boolean | Y | paired device 유무 |
+| parameter        | type    | mandatory | description      |
+| ---------------- | ------- | --------- | ---------------- |
+| hasPairedDevices | boolean | Y         | paired device 유무 |
 
 ### FinishDiscoverableModeSucceeded
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -343,7 +343,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### FinishDiscoverableModeFailed
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -360,9 +360,9 @@ Discoverable mode 비활성화 요청입니다.
 
 ### ConnectSucceeded
 
-* paired 이력에서 디바이스 연결이 성공 했을 때 또는 source\(스마트폰 등\)에서 직접 연결 연결 성공 했을 때 발생
+* paired 이력에서 디바이스 연결이 성공 했을 때 또는 source(스마트폰 등)에서 직접 연결 연결 성공 했을 때 발생
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -381,7 +381,7 @@ Discoverable mode 비활성화 요청입니다.
 
 * paired 이력에서 디바이스 연결이 실패 했을 때 발생
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -398,7 +398,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### DisconnectSucceeded
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -415,7 +415,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### DisconnectFailed
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -432,7 +432,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlPlaySucceeded
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -449,7 +449,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlPlayFailed
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -466,7 +466,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlStopSucceeded
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -483,7 +483,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlStopFailed
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -500,7 +500,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlPauseSucceeded
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -517,7 +517,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlPauseFailed
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -534,7 +534,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlNextSucceeded
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -551,7 +551,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlNextFailed
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -568,7 +568,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlPreviousSucceeded
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -585,7 +585,7 @@ Discoverable mode 비활성화 요청입니다.
 
 ### MediaControlPreviousFailed
 
-```text
+```
 {
   "header": {
     "namespace": "Bluetooth",
@@ -599,4 +599,3 @@ Discoverable mode 비활성화 요청입니다.
   }
 }
 ```
-
