@@ -12,10 +12,10 @@ TemplateView는 TemplateRenderer를 통해 전달되는 템플릿의 노출과 �
 
 TemplateView Interface에서 필수로 override 해야 하는 method입니다.
 
-| Methods                                                                                                                                                                                                                                                         |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <p><strong>fun load(templateContent: String, deviceTypeCode: String, dialogRequestId: String, onLoadingComplete: (() -> Unit)? = null)</strong> </p><p>새로운 탬플릿 노출이 필요할때 TemplateRenderer의 render()를 통해 호출됩니다. templateContent에는 template payload 전체가 전달됩니다.</p> |
-| <p><strong>fun update(templateContent: String, dialogRequestedId: String, onLoadingComplete: (() -> Unit))</strong> </p><p>이미 노출된 탬플릿의 부분 업데이트가 필요할때 TemplateRenderer의 update()를 통해 호출됩니다. templateContent에는 업데이트가 필요한 template payload가 전달됩니다.</p>             |
+| Methods |
+| :--- |
+| **fun load\(templateContent: String, deviceTypeCode: String, dialogRequestId: String, onLoadingComplete: \(\(\) -&gt; Unit\)? = null\)** 새로운 탬플릿 노출이 필요할때 TemplateRenderer의 render\(\)를 통해 호출됩니다. templateContent에는 template payload 전체가 전달됩니다. |
+| **fun update\(templateContent: String, dialogRequestedId: String, onLoadingComplete: \(\(\) -&gt; Unit\)\)** 이미 노출된 탬플릿의 부분 업데이트가 필요할때 TemplateRenderer의 update\(\)를 통해 호출됩니다. templateContent에는 업데이트가 필요한 template payload가 전달됩니다. |
 
 {% hint style="info" %}
 TemplateView 구현체는 android View 객체여야 합니다.
@@ -25,8 +25,8 @@ TemplateView 구현체는 android View 객체여야 합니다.
 
 생성될 TemplateView는 templateType에 따라 결정됩니다.
 
-TemplateView.kt에 선언된 정적 맵에 templateType과 templateConstructor가 매핑되어 있습니다.\
-이 맵에서 templateType에 맞는 templateConstructor를 찾아 TemplateView를 생성합니다.\
+TemplateView.kt에 선언된 정적 맵에 templateType과 templateConstructor가 매핑되어 있습니다.  
+이 맵에서 templateType에 맞는 templateConstructor를 찾아 TemplateView를 생성합니다.  
 매핑되는 것이 없을 경우 TemplateWebView 객체가 생성됩니다.
 
 원하는 templateType과 직접 구현한 TemplateView 생성자를 매핑하여 맵에 추가하면 됩니다.
@@ -46,3 +46,4 @@ TemplateView.kt
     }
 }
 ```
+

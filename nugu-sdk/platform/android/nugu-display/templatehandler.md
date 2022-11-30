@@ -1,5 +1,5 @@
 ---
-description: Template, 응용레벨 사이의 상호작용 커스텀
+description: 'Template, 응용레벨 사이의 상호작용 커스텀'
 ---
 
 # TemplateHandler
@@ -14,39 +14,36 @@ TemplateHandler는 `TemplateHandlerFactory`에서 생성합니다.
 
 ## TemplateHandler
 
-TemplateView (이하 View로 표기) 는 버튼이 클릭되거나, 보여지는 item list에 변화가 생길때 이를 응용레벨로 알려 처리되도록 합니다. 또한 Toast나 Activity의 노출을 요청할 수도 있습니다.\
+TemplateView \(이하 View로 표기\) 는 버튼이 클릭되거나, 보여지는 item list에 변화가 생길때 이를 응용레벨로 알려 처리되도록 합니다. 또한 Toast나 Activity의 노출을 요청할 수도 있습니다.  
 각 상황에 호출되는 메서드들은 아래와 같습니다.
 
-| Methods                                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------------------- |
-| **fun onElementSelected(tokenId: String, postback : String?)** View내 버튼 클릭시 호출된다.                                       |
-| **fun onChipSelected(text: String)** View내 chip(추천 명령어) 클릭시 호출된다.                                                       |
-| **fun onCloseClicked()** View내 닫기 버튼 클릭시 호출된다.                                                                          |
-| **fun onCloseWithParent()** Child View의 닫기 버튼 클릭시 호출된다. Parent View 를 함께 종료한다.                                          |
-| **fun onCloseAllClicked()** View내 홈 버튼 클릭시 호출된다. SDK에서는 노출중인 모든 템플릿을 종료한다.                                              |
-| **fun onNuguButtonSelected()** View내 누구 버튼 (아리아 호출) 클릭시 호출된다.                                                           |
-| **fun onPlayerCommand(command: String, param: String = "")** 미디어 재생 관련 동작이 필요할때 호출된다. (ex. View내 재생/일시정지 버튼 클릭)         |
-| **fun onContextChanged(context: String)** View의 display context 변경이 있을때 호출된다. (ex. focus item 변화, visible item 리스트의 변화) |
-| **fun showToast(text: String)** View에서 응용레벨로 Toast노출을 요청할때 호출된다.                                                        |
-| **fun showActivity(className: String)** View에서 응용레벨로 Activity 노출을 요청할때 호출된다.                                            |
-| **fun playTTS(text: String)** View에서 응용레벨로 TTS 재생을 요청할때 호출된다.                                                           |
-| **fun setClientListener(listener: ClientListener)** handler에 ClientListener를 설정한다.                                      |
-| **fun onClear()** TemplateView가 종료될때 호출된다. 여기서 사용한 리소스를 해제한다.                                                           |
-| **fun getNuguClient() : NuguAndroidClient?** TemplateHandler 의 내부 구현에 필요한 NuguAndroidClient 를 리턴한다.                     |
+| Methods |
+| :--- |
+| **fun onElementSelected\(tokenId: String\)** View내 버튼 클릭시 호출된다. |
+| **fun onChipSelected\(text: String\)** View내 chip\(추천 명령어\) 클릭시 호출된다. |
+| **fun onCloseClicked\(\)** View내 닫기 버튼 클릭시 호출된다. |
+| **fun onCloseAllClicked\(\)** View내 홈 버튼 클릭시 호출된다. SDK에서는 노출중인 모든 템플릿을 종료한다. |
+| **fun onNuguButtonSelected\(\)** View내 누구 버튼 \(아리아 호출\) 클릭시 호출된다. |
+| **fun onPlayerCommand\(command: String, param: String = ""\)** 미디어 재생 관련 동작이 필요할때 호출된다. \(ex. View내 재생/일시정지 버튼 클릭\) |
+| **fun onContextChanged\(context: String\)** View의 display context 변경이 있을때 호출된다. \(ex. focus item 변화, visible item 리스트의 변화\) |
+| **fun showToast\(text: String\)** View에서 응용레벨로 Toast노출을 요청할때 호출된다. |
+| **fun showActivity\(className: String\)** View에서 응용레벨로 Activity 노출을 요청할때 호출된다. |
+| **fun playTTS\(text: String\)** View에서 응용레벨로 TTS 재생을 요청할때 호출된다. |
+| **fun setClientListener\(listener: ClientListener\)** handler에 ClientListener를 설정한다. |
 
 ## TemplateHandler.ClientListener
 
 TemplateHandler가 View에서 응용레벨로의 메시지 전달 혹은 요청이라면, ClientListener는 응용레벨에서 View로의 메시지 전달과 요청이라고 할 수 있다.
 
-| Methods                                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------------------- |
-| **fun onMediaStateChanged(activity: AudioPlayerAgentInterface.State, currentTimeMs: Long, currentProgress: Float)** 미디어 재생 상태 변경시 호출된다. |
-| **fun onMediaDurationRetrieved(durationMs: Long)** 미디어의 재생시간이 구해졌을때 호출된다.                                                               |
-| **fun onMediaProgressChanged(progress: Float, currentTimeMs: Long)** 미디어의 재생경과 업데이트시 호출된다.                                              |
-| **fun controlFocus(direction: Direction): Boolean** View에 focus 이동을 요청한다.                                                               |
-| **fun controlScroll(direction: Direction): Boolean** View에 scroll 을 요청한다.                                                               |
-| **fun getFocusedItemToken(): String?** View내에 현재 focusing 중인 아이템의 토큰정보를 요구한다.                                                           |
-| **fun getVisibleTokenList(): List?** View내에 현재 visible한 아이템 리스트정보를 요구한다.                                                                |
+| Methods |
+| :--- |
+| **fun onMediaStateChanged\(activity: AudioPlayerAgentInterface.State, currentTimeMs: Long, currentProgress: Float\)** 미디어 재생 상태 변경시 호출된다. |
+| **fun onMediaDurationRetrieved\(durationMs: Long\)** 미디어의 재생시간이 구해졌을때 호출된다. |
+| **fun onMediaProgressChanged\(progress: Float, currentTimeMs: Long\)** 미디어의 재생경과 업데이트시 호출된다. |
+| **fun controlFocus\(direction: Direction\): Boolean** View에 focus 이동을 요청한다. |
+| **fun controlScroll\(direction: Direction\): Boolean** View에 scroll 을 요청한다. |
+| **fun getFocusedItemToken\(\): String?** View내에 현재 focusing 중인 아이템의 토큰정보를 요구한다. |
+| **fun getVisibleTokenList\(\): List?** View내에 현재 visible한 아이템 리스트정보를 요구한다. |
 
 ## TemplateHandler 적용
 
@@ -66,3 +63,4 @@ TemplateRenderer.templateHandlerFactory = object : TemplateHandler.TemplateHandl
     }
 }
 ```
+
