@@ -14,7 +14,7 @@ AudioPlayer Interface를 위한 Display Interface를 사용하기 위해서는 `
 * Btv
 * NU300
 
-## AudioPlayer Interface를 위한 확장 Template <a href="audioplayer-display-interface" id="audioplayer-display-interface"></a>
+## AudioPlayer Interface를 위한 확장 Template <a href="#audioplayer-display-interface" id="audioplayer-display-interface"></a>
 
 AudioPlayer를 지원하는 Play가 화면을 가진 디바이스에서 사용될 때 보여지는 Template으로 Play를 개발할 때 다음의 두 작업을 꼭 해야 합니다.
 
@@ -51,16 +51,18 @@ AudioPlayer를 위한 확장 Template의 타입은 두 가지이며, 타입에 �
 }
 ```
 
-| Parameter           | Type   | Required | Description                                                                 |
-| ------------------- | ------ | -------- | --------------------------------------------------------------------------- |
-| type                | string | Y        | <p>AudioPlayer template type</p><p> 1) AudioPlayer.Template1</p><p> 2) AudioPlayer.Template2</p> |
-| title.iconUrl       | string | N        | icon image url                                                              |
-| title.text          | string | Y        | title text                                                                  |
-| content.title       | string | Y        | content 영역의 title                                                           |
-| content.subtitle1   | string | Y        | subtitle1                                                                   |
-| content.subtitle2   | string | Y        | subtitle2                                                                   |
-| content.imageUrl    | string | Y        | image url                                                                   |
-| content.durationSec | string | N        | 오디오 콘텐츠의 길이로 단위는 초이며, 0보다 큰 값을 가질 경우 Progress Bar가 활성화됩니다.                  |
+| Parameter           | Type   | Required | Description                                                                                    |
+| ------------------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
+| type                | string | Y        | <p>AudioPlayer template type</p><p>1) AudioPlayer.Template1</p><p>2) AudioPlayer.Template2</p> |
+| title               | object | Y        | title object                                                                                   |
+| title.iconUrl       | string | N        | icon image url                                                                                 |
+| title.text          | string | Y        | title text                                                                                     |
+| content             | object | Y        | content object                                                                                 |
+| content.title       | string | Y        | content 영역의 title                                                                              |
+| content.subtitle1   | string | Y        | subtitle1                                                                                      |
+| content.subtitle2   | string | Y        | subtitle2                                                                                      |
+| content.imageUrl    | string | Y        | image url                                                                                      |
+| content.durationSec | string | N        | 오디오 콘텐츠의 길이로 단위는 초이며, 0보다 큰 값을 가질 경우 Progress Bar가 활성화됩니다.                                     |
 
 #### AudioPlayer.Template2
 
@@ -84,15 +86,17 @@ AudioPlayer를 위한 확장 Template의 타입은 두 가지이며, 타입에 �
 }
 ```
 
-| Parameter           | Type   | Required | Description                                                                 |
-| ------------------- | ------ | -------- | --------------------------------------------------------------------------- |
-| type                | string | Y        | <p>AudioPlayer template type</p><p> 1) AudioPlayer.Template1</p><p> 2) AudioPlayer.Template2</p> |
-| title.iconUrl       | string | N        | icon image url                                                              |
-| title.text          | string | Y        | title text                                                                  |
-| content.title       | string | Y        | content 영역의 title                                                           |
-| content.subtitle    | string | Y        | T map용 Template은 기본으로 title, subtitle만 제공                                   |
-| content.imageUrl    | string | Y        | image url                                                                   |
-| content.durationSec | string | N        | 오디오 콘텐츠의 길이로 단위는 초이며, 0보다 큰 값을 가질 경우 Progress Bar가 활성화됩니다.                  |
+| Parameter           | Type   | Required | Description                                                                                    |
+| ------------------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
+| type                | string | Y        | <p>AudioPlayer template type</p><p>1) AudioPlayer.Template1</p><p>2) AudioPlayer.Template2</p> |
+| title               | object | Y        | title object                                                                                   |
+| title.iconUrl       | string | N        | icon image url                                                                                 |
+| title.text          | string | Y        | title text                                                                                     |
+| content             | object | Y        | content object                                                                                 |
+| content.title       | string | Y        | content 영역의 title                                                                              |
+| content.subtitle    | string | Y        | T map용 Template은 기본으로 title, subtitle만 제공                                                      |
+| content.imageUrl    | string | Y        | image url                                                                                      |
+| content.durationSec | string | N        | 오디오 콘텐츠의 길이로 단위는 초이며, 0보다 큰 값을 가질 경우 Progress Bar가 활성화됩니다.                                     |
 
 #### Template Type을 지정하지 않은 경우 (Default Template)
 
@@ -103,7 +107,7 @@ AudioPlayer를 위한 확장 Template의 타입은 두 가지이며, 타입에 �
 {% hint style="info" %}
 T map은 Default, AudioPlayer.Template1, AudioPlayer.Template2과 같은 type과는 상관없이 아래 그림과 같이 제공됩니다.
 
-![](../../../../.gitbook/assets/audioplayer-display-interface-05.png)
+<img src="../../../../.gitbook/assets/audioplayer-display-interface-05.png" alt="" data-size="original">
 {% endhint %}
 
 ### 2. Display Interface용 Event를 처리하는 Action 생성

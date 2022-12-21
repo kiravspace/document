@@ -387,8 +387,10 @@ audio_player_handler->requestShuffleCommand(false)
 | ---------------------------------------------- | ------------------- | --------- | -------------------------------------------------------------------------------------------- |
 | disableTemplate                                | bool                | N         | true면 스크린을 가진 디바이스에서 AudioPlayer 재생 시 template을 display하지 않음 default - false                 |
 | template.type                                  | string              | Y         | AudioPlayer template type - AudioPlayer.Template1 - AudioPlayer.Template2                    |
+| template. title                                | object              | Y         | title object                                                                                 |
 | template. title. iconUrl                       | string              | N         | icon image url                                                                               |
 | template. title. text                          | string              | Y         | title text                                                                                   |
+| template. content                              | object              | Y         | content object                                                                               |
 | template. content. title                       | string              | Y         | content 영역의 title                                                                            |
 | template. content. subtitle1                   | string              | Y         | subtitle1                                                                                    |
 | template. content. subtitle2                   | string              | N         | subtitle2                                                                                    |
@@ -452,8 +454,10 @@ audio_player_handler->requestShuffleCommand(false)
 | ----------------------------------------------- | ------------------- | --------- | ---------------------------------------------------------------------------- |
 | disableTemplate                                 | bool                | N         | true면 스크린을 가진 디바이스에서 AudioPlayer 재생 시 template을 display하지 않음 default : false |
 | template. type                                  | string              | Y         | AudioPlayer template type - AudioPlayer.Template1 - AudioPlayer.Template2    |
+| template. title                                 | object              | Y         | title object                                                                 |
 | template. title. iconUrl                        | string              | N         | icon image url                                                               |
 | template. title. text                           | string              | Y         | title text                                                                   |
+| template. content                               | object              | Y         | content object                                                               |
 | template. content. title                        | string              | Y         | content 영역의 title                                                            |
 | template. content. subtitle                     | string              | Y         | subtitle                                                                     |
 | template. content. subtitle1                    | string              | Y         | lyrics가 있는 경우, 가사화면 제목 우측의 소제목                                               |
