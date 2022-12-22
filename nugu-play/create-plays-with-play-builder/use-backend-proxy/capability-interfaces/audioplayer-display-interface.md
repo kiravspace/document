@@ -52,7 +52,7 @@ AudioPlayer를 위한 확장 Template의 타입은 두 가지이며, 타입에 �
 ```
 
 | Parameter           | Type   | Required | Description                                                                                    |
-| ------------------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
+|---------------------|--------|----------|------------------------------------------------------------------------------------------------|
 | type                | string | Y        | <p>AudioPlayer template type</p><p>1) AudioPlayer.Template1</p><p>2) AudioPlayer.Template2</p> |
 | title               | object | Y        | title object                                                                                   |
 | title.iconUrl       | string | N        | icon image url                                                                                 |
@@ -87,7 +87,7 @@ AudioPlayer를 위한 확장 Template의 타입은 두 가지이며, 타입에 �
 ```
 
 | Parameter           | Type   | Required | Description                                                                                    |
-| ------------------- | ------ | -------- | ---------------------------------------------------------------------------------------------- |
+|---------------------|--------|----------|------------------------------------------------------------------------------------------------|
 | type                | string | Y        | <p>AudioPlayer template type</p><p>1) AudioPlayer.Template1</p><p>2) AudioPlayer.Template2</p> |
 | title               | object | Y        | title object                                                                                   |
 | title.iconUrl       | string | N        | icon image url                                                                                 |
@@ -107,7 +107,7 @@ AudioPlayer를 위한 확장 Template의 타입은 두 가지이며, 타입에 �
 {% hint style="info" %}
 T map은 Default, AudioPlayer.Template1, AudioPlayer.Template2과 같은 type과는 상관없이 아래 그림과 같이 제공됩니다.
 
-<img src="../../../../.gitbook/assets/audioplayer-display-interface-05.png" alt="" data-size="original">
+![](../../../../.gitbook/assets/audioplayer-display-interface-05.png)
 {% endhint %}
 
 ### 2. Display Interface용 Event를 처리하는 Action 생성
